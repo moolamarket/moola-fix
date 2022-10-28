@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Testing Moola Fix on Celo fork",
+  "main": "index.js",
+  "scripts": {
+    "test": "truffle test",
+    "test-moola-fix": "truffle test test/moola-fix.js",
+    "truffle": "truffle",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate"
+  },
+  "author": "Oleksii Matiiasevych",
+  "license": "ISC",
+  "dependencies": {
+    "@ganache/console.log": "0.2.0",
+    "@openzeppelin/contracts": "3.1.0",
+    "big-number": "^2.0.0",
+    "hardhat": "^2.12.0",
+    "truffle": "^5.6.2"
+  }
+}
