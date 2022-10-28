@@ -20,7 +20,7 @@
     "test": "lerna exec --concurrency 1 -- npm run test",
     "tsc": "tsc --build src",
     "tsc.clean": "npx lerna exec -- npx shx rm -rf lib dist typings",
-    "fork-celo": "npm run start -- --fork https://forno.celo.org --wallet.unlockedAccounts=0xd7f77169d5E6a32C5044052F9a49eb94697b25ED --miner.defaultGasPrice=0 --chain.hardfork=istanbul --chain.allowUnlimitedContractSize=true --miner.blockGasLimit=50000000"
+    "fork-celo": "npm run start -- --fork https://forno.celo.org --wallet.unlockedAccounts=0xd7f77169d5E6a32C5044052F9a49eb94697b25ED --miner.defaultGasPrice=0 --chain.hardfork=istanbul --chain.allowUnlimitedContractSize=true --miner.blockGasLimit=20000000"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.2",

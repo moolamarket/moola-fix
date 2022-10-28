@@ -19,4 +19,4 @@ npm run compile
 npm run test
 ```
 
-To see all kinds of logging, uncomment `console.log` lines in all `*.sol` files.
+To see all kinds of logging, uncomment `console.log` lines in all `*.sol` files. You will need to set the block gas limit to 30M then in ganache-7.4.4/package.json "fork-celo" script.
