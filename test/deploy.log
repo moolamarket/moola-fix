@@ -1,0 +1,182 @@
+   Deploying 'AToken'
+   ------------------
+   > transaction hash:    0xad646f979c8e5df043d2a3503f8b706896a3d583ecb1332fcfab9a40866cf864
+   > Blocks: 2            Seconds: 8
+   > contract address:    0xF44E15badBC9a2C5D71A569D6dfB584a8cc97A2A
+   > block number:        15915883
+   > block timestamp:     1667247411
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.20594786565413871
+   > gas used:            2292225 (0x22fa01)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001375335 ETH
+
+
+   Deploying 'ATokenWithTransferForMoolaFix'
+   -----------------------------------------
+   > transaction hash:    0x145fb988658585e26194f2dde38a758cb2a8bfbe67d9ce45fd2fb768987e2e5e
+   > Blocks: 1            Seconds: 4
+   > contract address:    0xc8c5765bd5690e6dF761a13DB0E133d158b3c64D
+   > block number:        15915885
+   > block timestamp:     1667247421
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.20457061845413871
+   > gas used:            2295412 (0x230674)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0013772472 ETH
+
+
+   Deploying 'GenericLogic'
+   ------------------------
+   > transaction hash:    0xf5a6d5733b016a6f652ac08d44be3c038e6ad7896a0eae5d743a03852a8d4bcd
+   > Blocks: 1            Seconds: 4
+   > contract address:    0x4d0F083077db8bE0AB37AA18DbBe577f5034033a
+   > block number:        15915887
+   > block timestamp:     1667247431
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.20406016125413871
+   > gas used:            850762 (0xcfb4a)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0005104572 ETH
+
+
+   Linking
+   -------
+   * Contract: ValidationLogic <--> Library: GenericLogic (at address: 0x4d0F083077db8bE0AB37AA18DbBe577f5034033a)
+
+   Deploying 'ReserveLogic'
+   ------------------------
+   > transaction hash:    0xb04eadec91812459f96e76ddb58329be063725f95f9956ea83a6aa7ca0de07f6
+   > Blocks: 1            Seconds: 4
+   > contract address:    0xa3a84E905359d037ac1241F4fF13BBA5754bE935
+   > block number:        15915889
+   > block timestamp:     1667247441
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.20395546845413871
+   > gas used:            174488 (0x2a998)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0001046928 ETH
+
+
+   Deploying 'ReserveLogicNoInterest'
+   ----------------------------------
+   > transaction hash:    0x08c8372c452a7dfc61bf7911ee09e2837901367f37f2a80ea71cf67a2ec1d955
+   > Blocks: 1            Seconds: 4
+   > contract address:    0xe788cBf8d93c182CA1D9bdfCA1746fe384897728
+   > block number:        15915891
+   > block timestamp:     1667247451
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.20385077565413871
+   > gas used:            174488 (0x2a998)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0001046928 ETH
+
+
+   Deploying 'ValidationLogic'
+   ---------------------------
+   > transaction hash:    0x890ec396ce5f6344e812bf9bcf9e8bb14e07c630f3012a97d3112e67c7759c5b
+   > Blocks: 1            Seconds: 4
+   > contract address:    0x71b7eCCaB9b239a33Ba428B096a8c33011A5353c
+   > block number:        15915893
+   > block timestamp:     1667247461
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.20275220325413871
+   > gas used:            1830954 (0x1bf02a)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0010985724 ETH
+
+
+   Linking
+   -------
+   * Contract: LendingPoolWithGracePeriod <--> Library: ReserveLogic (at address: 0xa3a84E905359d037ac1241F4fF13BBA5754bE935)
+
+   Linking
+   -------
+   * Contract: LendingPoolWithGracePeriod <--> Library: ValidationLogic (at address: 0x71b7eCCaB9b239a33Ba428B096a8c33011A5353c)
+
+   Linking
+   -------
+   * Contract: LendingPoolWithUpdateLiquidityIndex <--> Library: ReserveLogicNoInterest (at address: 0xe788cBf8d93c182CA1D9bdfCA1746fe384897728)
+
+   Linking
+   -------
+   * Contract: LendingPoolWithUpdateLiquidityIndex <--> Library: ValidationLogic (at address: 0x71b7eCCaB9b239a33Ba428B096a8c33011A5353c)
+
+   Deploying 'LendingPoolWithUpdateLiquidityIndex'
+   -----------------------------------------------
+   > transaction hash:    0x5bd24ed8e84bcf45de8fb7f722602e96b5192349f620013b8ed3365b1dd159cd
+   > Blocks: 1            Seconds: 4
+   > contract address:    0x3aBdfB1B91B25C58f80ef6df88d6d6043ea2e104
+   > block number:        15915895
+   > block timestamp:     1667247471
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.19973980725413871
+   > gas used:            5020660 (0x4c9bf4)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.003012396 ETH
+
+
+   Deploying 'LendingPoolWithGracePeriod'
+   --------------------------------------
+   > transaction hash:    0x8db2e7debda0b0e1943de67390be70b17d7cdff4aafce9fdce9bf74c7093b4ce
+   > Blocks: 1            Seconds: 4
+   > contract address:    0x2EBa86dF50a8c5E78897ACe75FF24Bf1B8291A2C
+   > block number:        15915897
+   > block timestamp:     1667247481
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.19742396145413871
+   > gas used:            3859743 (0x3ae51f)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0023158458 ETH
+
+  arguments:  0xc8c5765bd5690e6dF761a13DB0E133d158b3c64D 0xF44E15badBC9a2C5D71A569D6dfB584a8cc97A2A 0x3aBdfB1B91B25C58f80ef6df88d6d6043ea2e104 0x2EBa86dF50a8c5E78897ACe75FF24Bf1B8291A2C
+
+   Deploying 'MoolaFix'
+   --------------------
+   > transaction hash:    0x164ed41f5633f2bc8292cf343ee05db3f7cd0fef6d2cd9d9e3f61232a008bdfb
+   > Blocks: 0            Seconds: 4
+   > contract address:    0x4ddfd392bA63C2Fd294eE20D483388DFa774cca5
+   > block number:        15915899
+   > block timestamp:     1667247491
+   > account:             0x643C574128c7C56A1835e021Ad0EcC2592E72624
+   > balance:             0.19409529645413871
+   > gas used:            5547775 (0x54a6ff)
+   > gas price:           0.6 gwei
+   > value sent:          0 ETH
+   > total cost:          0.003328665 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:        0.0132279042 ETH
+
+Summary
+=======
+> Total deployments:   9
+> Final cost:          0.0132279042 ETH
+
+
+Verifying AToken
+Pass - Verified: https://celoscan.io/address/0xF44E15badBC9a2C5D71A569D6dfB584a8cc97A2A#code
+Verifying ATokenWithTransferForMoolaFix
+Pass - Verified: https://celoscan.io/address/0xc8c5765bd5690e6dF761a13DB0E133d158b3c64D#code
+Verifying GenericLogic
+Pass - Verified: https://celoscan.io/address/0x4d0F083077db8bE0AB37AA18DbBe577f5034033a#code
+Verifying ReserveLogic
+Pass - Verified: https://celoscan.io/address/0xa3a84E905359d037ac1241F4fF13BBA5754bE935#code
+Verifying ReserveLogicNoInterest
+Pass - Verified: https://celoscan.io/address/0xe788cBf8d93c182CA1D9bdfCA1746fe384897728#code
+Verifying ValidationLogic
+Fail - Unable to verify
+Verifying LendingPoolWithGracePeriod
+Fail - Unable to verify
+Verifying LendingPoolWithUpdateLiquidityIndex
+Fail - Unable to verify
+Failed to verify 3 contract(s): ValidationLogic, LendingPoolWithGracePeriod, LendingPoolWithUpdateLiquidityIndex
