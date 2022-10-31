@@ -759,8 +759,27 @@ contract MoolaFix is Ownable {
     return mem;
   }
 
+  function setReserveParams(address reserve, uint ltv, uint threshold, uint bonus) internal {
+    lendingPoolConfigurator.configureReserveAsCollateral(reserve, ltv, threshold, bonus);
+  }
+
+  function setReserveFacrot(address reserve, uint percent) internal {
+    lendingPoolConfigurator.setReserveFactor(reserve, percent);
+  }
+
   function execute() external onlyOwner {
     Mem memory mem = populateMem();
+
+    // console.log('MOOLAFIX: totalSupply mCELO', IERC20(mCELO).totalSupply());
+    // console.log('MOOLAFIX: totalSupply mcUSD', IERC20(mcUSD).totalSupply());
+    // console.log('MOOLAFIX: totalSupply mcEUR', IERC20(mcEUR).totalSupply());
+    // console.log('MOOLAFIX: totalSupply mcREAL', IERC20(mcREAL).totalSupply());
+    // console.log('MOOLAFIX: totalSupply mMOO', IERC20(mMOO).totalSupply());
+    // console.log('MOOLAFIX: liquidity CELO', IERC20(CELO).balanceOf(mCELO));
+    // console.log('MOOLAFIX: liquidity cUSD', IERC20(cUSD).balanceOf(mcUSD));
+    // console.log('MOOLAFIX: liquidity cEUR', IERC20(cEUR).balanceOf(mcEUR));
+    // console.log('MOOLAFIX: liquidity cREAL', IERC20(cREAL).balanceOf(mcREAL));
+    // console.log('MOOLAFIX: liquidity MOO', IERC20(MOO).balanceOf(mMOO));
 
     // step 5 : Transfer EmergencyAdmin to the MoolaFix in order to unpause / pause the pool
     // console.log('MOOLAFIX: start execute ');
@@ -776,11 +795,11 @@ contract MoolaFix is Ownable {
 
     // console.log('MOOLAFIX: set reserve factor ');
     // Additional step so that repayments do not accumulate profit in treasury.
-    lendingPoolConfigurator.setReserveFactor(CELO, 0);
-    lendingPoolConfigurator.setReserveFactor(cUSD, 0);
-    lendingPoolConfigurator.setReserveFactor(cEUR, 0);
-    lendingPoolConfigurator.setReserveFactor(cREAL, 0);
-    lendingPoolConfigurator.setReserveFactor(MOO, 0);
+    setReserveFacrot(CELO, 0);
+    setReserveFacrot(cUSD, 0);
+    setReserveFacrot(cEUR, 0);
+    setReserveFacrot(cREAL, 0);
+    setReserveFacrot(MOO, 0);
 
     // console.log('MOOLAFIX: unpase pool ');
     // step 7: unpause the pool
@@ -891,17 +910,17 @@ contract MoolaFix is Ownable {
     // console.log('MOOLAFIX: user 0x5472895f8de2424AAE41CfEBA18D39145Fa8E685 mcEUR', IERC20(mCELO).balanceOf(0x5472895f8de2424AAE41CfEBA18D39145Fa8E685));
 
     // step 19: change asset risk parameters CELO, cEUR, cREAL
-    lendingPoolConfigurator.configureReserveAsCollateral(CELO, 6500, 7000, 10500); // 65% LTV, 70% threshold, 5% bonus
-    lendingPoolConfigurator.configureReserveAsCollateral(cEUR, 4500, 5000, 11000); // 45% LTV, 50% threshold, 10% bonus
-    lendingPoolConfigurator.configureReserveAsCollateral(cREAL, 1, 1, 11000); // 0.01% LTV, 0.01% threshold, 10% bonus, effectively removed as collateral
-    lendingPoolConfigurator.configureReserveAsCollateral(MOO, 1, 1, 11000); // 0.01% LTV, 0.01% threshold, 10% bonus, effectively removed as collateral
+    setReserveParams(CELO, 6500, 7000, 10500); // 65% LTV, 70% threshold, 5% bonus
+    setReserveParams(cEUR, 4500, 5000, 11000); // 45% LTV, 50% threshold, 10% bonus
+    setReserveParams(cREAL, 1, 1, 11000); // 0.01% LTV, 0.01% threshold, 10% bonus, effectively removed as collateral
+    setReserveParams(MOO, 1, 1, 11000); // 0.01% LTV, 0.01% threshold, 10% bonus, effectively removed as collateral
 
     // Additional step so that repayments start accumulating profits again.
-    lendingPoolConfigurator.setReserveFactor(CELO, 1000);
-    lendingPoolConfigurator.setReserveFactor(cUSD, 1000);
-    lendingPoolConfigurator.setReserveFactor(cEUR, 1000);
-    lendingPoolConfigurator.setReserveFactor(cREAL, 1000);
-    lendingPoolConfigurator.setReserveFactor(MOO, 1000);
+    setReserveFacrot(CELO, 1000);
+    setReserveFacrot(cUSD, 1000);
+    setReserveFacrot(cEUR, 1000);
+    setReserveFacrot(cREAL, 1000);
+    setReserveFacrot(MOO, 1000);
 
     // console.log('MOOLAFIX: checks step 21');
     logBalances();
@@ -977,6 +996,24 @@ contract MoolaFix is Ownable {
     IERC20(cREAL).transfer(OwnedWallet, IERC20(cREAL).balanceOf(address(this)));
 
     logBalances();
+    requireMTotalLessThan(mCELO, 8_206_100_000000000000000000);
+    requireMTotalLessThan(mcUSD, 3_484_550_000000000000000000);
+    requireMTotalLessThan(mcEUR, 1_135_950_000000000000000000);
+    requireMTotalLessThan(mcREAL, 177_500_000000000000000000);
+    requireMTotalLessThan(mMOO, 1_888_050_000000000000000000);
+    requireUnderlyingGreaterThan(CELO, mCELO, 8_126_850_000000000000000000);
+    requireUnderlyingGreaterThan(cUSD, mcUSD, 641_600_000000000000000000);
+    requireUnderlyingGreaterThan(cEUR, mcEUR, 765_100_000000000000000000);
+    requireUnderlyingGreaterThan(cREAL, mcREAL, 3_700_000000000000000000);
+    requireUnderlyingGreaterThan(MOO, mMOO, 1_884_550_000000000000000000);
+  }
+
+  function requireMTotalLessThan(address token, uint amount) internal view {
+    require(IERC20(token).totalSupply() < amount);
+  }
+
+  function requireUnderlyingGreaterThan(address token, address mToken, uint amount) internal view {
+    require(IERC20(token).balanceOf(mToken) > amount);
   }
 
   // helper functions
