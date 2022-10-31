@@ -7,7 +7,7 @@ To install do:
 ./install.sh
 ```
 
-Then you need to launch node in the parent directory with:
+Then you need to launch node with (should be restarted every 5 minutes and between tests):
 
 ```
 ./fork.sh

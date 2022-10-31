@@ -5,14 +5,14 @@ module.exports = {
       port: 8545,            // Standard Ethereum port (default: none)
       network_id: "42220",       // Any network (default: none)
       gasPrice: "0",
-      gas: 39000000,
+      gas: 19000000,
       disableConfirmationListener: true,
+      networkCheckTimeout: 360000,
     },
   },
 
-  // Set default mocha options here, use special reporters, etc.
   mocha: {
-    // timeout: 100000
+    timeout: 360000
   },
 
   compilers: {

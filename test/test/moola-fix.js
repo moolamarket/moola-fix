@@ -10,10 +10,6 @@ const AToken = artifacts.require('AToken');
 const MoolaFix = artifacts.require('MoolaFix');
 const BigNumber = require('bignumber.js');
 
-const {
-  zeroRateStrategyStableTwo,
-} = require('../contracts/MoolaFix/zeroRateStrategies.js');
-
 function BN(num) {
   return new BigNumber(num);
 }
@@ -105,7 +101,7 @@ contract('Moola Fix', (accounts) => {
         (await addressesProvider.transferOwnership.request(moolaFixAddress)).data,
         (await moolaFix.execute.request()).data,
       ],
-      { from: multisig, gasPrice: 0, gas: 40000000 }
+      { from: multisig, gasPrice: 0, gas: 19000000 }
     );
     // console.log(await balanceOf(celo, moolaFixAddress));
     // console.log(await balanceOf(cusd, moolaFixAddress));
